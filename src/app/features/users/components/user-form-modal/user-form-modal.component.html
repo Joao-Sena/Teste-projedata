@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>{{ data.user ? 'Editar usuário' : 'Adicionar novo usuário' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" placeholder="Nome completo">
+      @if (form.get('name')?.invalid && form.get('name')?.touched) {
+        <mat-error>Nome é obrigatório</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="email@exemplo.com">
+      @if (form.get('email')?.touched) {
+        @if (form.get('email')?.hasError('required')) {
+          <mat-error>E-mail é obrigatório</mat-error>
+        } @else if (form.get('email')?.hasError('email')) {
+          <mat-error>E-mail inválido</mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Celular</mat-label>
+      <input matInput formControlName="phone" placeholder="(00) 00000-0000">
+      @if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+        <mat-error>Celular é obrigatório</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Gênero</mat-label>
+      <mat-select formControlName="gender">
+        @for (option of genderOptions; track option.value) {
+          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+        }
+      </mat-select>
+      @if (form.get('gender')?.invalid && form.get('gender')?.touched) {
+        <mat-error>Gênero é obrigatório</mat-error>
+      }
+    </mat-form-field>
+
+    <p class="sms-notice">
+      O usuário receberá uma senha provisória para acesso ao sistema por SMS
+    </p>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="save()">
+    Salvar
+  </button>
+</mat-dialog-actions>

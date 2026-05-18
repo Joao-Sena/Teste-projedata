@@ -1,59 +1,26 @@
-# TesteProjedata
+# Projeto de Teste técnico do ProjeData - Angular 20
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.25.
+- Desafio prático se encontra na pasta: users
+- Testes solicitados antes que não couberam responder no documento nas pastas: cart-counter e search
+- Para rodar o projeto -> "ng serve -o", pois não utilizei server local nem nada assim para os usuário, como o teste deu essa opção fiz a manipulação dos dados via ARRAY para não ter dependências de outros serviços
 
-## Development server
+## Funcionalidades e detalhes
+- Listagem de usuários
+- Adicionar novo usuário
+- Editar dados do usuário
+- Filtrar usuário por nome ou e-mail
+- Imagens geradas automaticamente por uma URL
+- Testes unitários em JEST 100% -> npm run test:coverage | caminho do relatório de testes: teste-projedata/coverage/lcov-report/index.html
 
-To start a local development server, run:
+Capture de tela de como ficou:
+<span>
+    <img src="https://raw.githubusercontent.com/Joao-Sena/Teste-projedata/main/src/assets/captura.png" width="90%">
+</span>
 
-```bash
-ng serve
-```
+Obs: Como é um projeto pequeno apenas utilizei a pasta Feature, mas em um projeto maior também faria uma pasta SHARED para compartilhamento de services, utils, etc. Também uma pasta CORE para serviços relacionados ao Core da aplicações, por exemplo um AuthGuard ou storageService por exemplo.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Informações do Desenvolvedor
+- Linkedin: https://www.linkedin.com/in/joaovscardoso/
+- Email: joaosena.contato@gmail.com
+- (15)99842-1535
+- Github: https://github.com/Joao-Sena

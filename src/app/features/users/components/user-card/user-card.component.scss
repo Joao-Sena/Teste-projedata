@@ -1,0 +1,39 @@
+.user-card {
+  --mat-card-container-shape: 0px;
+  border-radius: 0 !important;
+  border-left: 4px solid #0067d5;
+  background-color: #f0f0f0;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.edit-btn { color: #0067d5; }
+
+.user-name {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.user-email {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}

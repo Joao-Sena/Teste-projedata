@@ -1,0 +1,70 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: #656565;
+  margin: 4px 0px 40px 0px;
+}
+
+.search-field {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.page-container {
+  flex: 1;
+  padding: 28px 40px 96px;
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  gap: 16px;
+}
+
+.state-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.error-state {
+  color: #c62828;
+}
+
+.empty-state {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.fab-add {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  border-radius: 50% !important;
+  background-color: #0067d5 !important;
+  color: white !important;
+}
+
+@media (max-width: 768px) {
+  .page-container{ padding: 28px 16px 96px; }
+}

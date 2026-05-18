@@ -1,0 +1,43 @@
+<div class="layout">
+  <app-sidebar />
+
+  <main class="page-container">
+    <h1 class="title">Usuários cadastrados</h1>
+    <h2 class="subtitle">Gerencie os dados dos usuários do sistema</h2>
+
+    <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+      <mat-label>Pesquisar</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput [formControl]="searchControl">
+    </mat-form-field>
+
+    @if (loading()) {
+      <div class="state-container">
+        <mat-spinner diameter="48" />
+      </div>
+
+    } @else if (error()) {
+      <div class="state-container error-state">
+        <mat-icon class="state-icon">error_outline</mat-icon>
+        <p>{{ error() }}</p>
+      </div>
+
+    } @else if (users().length === 0) {
+      <div class="state-container empty-state">
+        <mat-icon class="state-icon">people_outline</mat-icon>
+        <p>Nenhum usuário encontrado</p>
+      </div>
+
+    } @else {
+      <div class="users-grid">
+        @for (user of users(); track user.id) {
+          <app-user-card [user]="user" (edit)="openEditModal($event)" />
+        }
+      </div>
+    }
+
+    <button mat-fab class="fab-add" (click)="openAddModal()" aria-label="Adicionar usuário">
+      <mat-icon>add</mat-icon>
+    </button>
+  </main>
+</div>

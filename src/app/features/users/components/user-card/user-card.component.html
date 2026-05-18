@@ -1,0 +1,17 @@
+<mat-card class="user-card">
+  <mat-card-content>
+    <div class="user-row">
+      <img class="user-avatar"
+        [src]="'https://randomuser.me/api/portraits/' + (user().gender === 'female' ? 'women' : 'men') + '/' + (user().id % 100) + '.jpg'"
+        [alt]="user().name"
+        loading="lazy" />
+      <div class="user-info">
+        <span class="user-name">{{ user().name }}</span>
+        <span class="user-email">{{ user().email }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" (click)="edit.emit(user())" aria-label="Editar usuário">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
