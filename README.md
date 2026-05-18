@@ -22,7 +22,7 @@ Testes unitários cobertura:
     <img src="https://raw.githubusercontent.com/Joao-Sena/Teste-projedata/main/src/assets/testes-unitarios.png" width="90%">
 </span>
 
-Obs: Como é um projeto pequeno apenas utilizei a pasta Feature, mas em um projeto maior também faria uma pasta SHARED para compartilhamento de services, utils, etc. Também uma pasta CORE para serviços relacionados ao Core da aplicações, por exemplo um AuthGuard ou storageService por exemplo.
+Obs: Como é um projeto pequeno apenas utilizei a pasta Feature, mas em um projeto maior também faria uma pasta SHARED para compartilhamento de services, utils, etc. Também uma pasta CORE para serviços relacionados ao Core da aplicações, por exemplo um AuthGuard,storageService, Interceptor, etc.
 
 ## Informações do Desenvolvedor
 - Linkedin: https://www.linkedin.com/in/joaovscardoso/
