@@ -1,4 +1,4 @@
-# Projeto de Teste técnico do ProjeData - Angular 20
+# Teste técnico para a ProjeData - Angular 20
 
 - Desafio prático se encontra na pasta: users
 - Testes solicitados antes que não couberam responder no documento nas pastas: cart-counter e search
