@@ -1,7 +1,7 @@
 # Teste técnico para a ProjeData - Angular 20
 
 - Desafio prático se encontra na pasta: users
-- Testes solicitados antes que não couberam responder no documento nas pastas: cart-counter e search
+- Exercícios das etapas 2.3 e 3.1 nas pastas: cart-counter e search (os outros entendi que era só responder diretamente no documento ou se era código pequeno deixei lá)
 - Para rodar o projeto -> "ng serve -o", pois não utilizei server local nem nada assim para os usuário, como o teste deu essa opção fiz a manipulação dos dados via ARRAY para não ter dependências de outros serviços
 
 ## Funcionalidades e detalhes
