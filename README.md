@@ -17,6 +17,11 @@ Capture de tela de como ficou:
     <img src="https://raw.githubusercontent.com/Joao-Sena/Teste-projedata/main/src/assets/captura.png" width="90%">
 </span>
 
+Testes unitários cobertura:
+<span>
+    <img src="https://raw.githubusercontent.com/Joao-Sena/Teste-projedata/main/src/assets/testes-unitarios.png" width="90%">
+</span>
+
 Obs: Como é um projeto pequeno apenas utilizei a pasta Feature, mas em um projeto maior também faria uma pasta SHARED para compartilhamento de services, utils, etc. Também uma pasta CORE para serviços relacionados ao Core da aplicações, por exemplo um AuthGuard ou storageService por exemplo.
 
 ## Informações do Desenvolvedor
