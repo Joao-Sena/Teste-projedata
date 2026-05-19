@@ -1,0 +1,117 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Using Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 22.x
+
+      - name: run install, build and test
+        run: |
+          npm ci --legacy-peer-deps
+          npm test -- --watchAll=false
+          npm run build
+
+  create-pr-develop-to-main:
+    name: Create Pull Request develop -> main
+    runs-on: ubuntu-latest
+    needs: continuous-integration
+    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Create or update PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const headBranch = "develop";
+            const baseBranch = "main";
+
+            // Busca PR existente entre develop -> main (caso já exista, não cria outro)
+            const { data: existingPrs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: "open",
+              head: `${owner}:${headBranch}`,
+              base: baseBranch,
+              per_page: 100
+            });
+
+            if (existingPrs.length > 0) {
+              core.info(`PR já existe (#${existingPrs[0].number}). Nenhuma ação necessária.`);
+              return;
+            }
+
+            await github.rest.pulls.create({
+              owner,
+              repo,
+              title: "Automated PR: develop -> main",
+              head: headBranch,
+              base: baseBranch,
+              body: "Este PR foi criado automaticamente após o pipeline de CI passar no branch develop."
+            });
+
+  create-pr-develop-from-feature:
+    name: Create Pull Request feature/* -> develop
+    runs-on: ubuntu-latest
+    needs: continuous-integration
+    if: ${{ success() && github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/') }}
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Create or update PR (feature -> develop)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Ex: refs/heads/feature/foo => feature/foo
+            const headBranch = context.ref.replace('refs/heads/', '');
+            const baseBranch = "develop";
+
+            // Busca PR existente entre feature/<branch> -> develop (caso já exista, não cria outro)
+            const { data: existingPrs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: "open",
+              head: `${owner}:${headBranch}`,
+              base: baseBranch,
+              per_page: 100
+            });
+
+            if (existingPrs.length > 0) {
+              core.info(`PR já existe (#${existingPrs[0].number}) para ${headBranch} -> ${baseBranch}. Nenhuma ação necessária.`);
+              return;
+            }
+
+            await github.rest.pulls.create({
+              owner,
+              repo,
+              title: `Automated PR: ${headBranch} -> ${baseBranch}`,
+              head: headBranch,
+              base: baseBranch,
+              body: `Este PR foi criado automaticamente após o pipeline de CI passar no branch ${headBranch}.`
+            });
